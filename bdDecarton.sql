@@ -1,0 +1,136 @@
+drop database if exists DECARTON;
+create database if not exists DECARTON;
+USE DECARTON;
+CREATE TABLE IF NOT exists users (
+	id int auto_increment primary key,
+    username varchar(50) not null,
+    password varchar(50) not null
+);
+insert into users (username, password) values ('admin', 'admin');
+create table if not exists productos (
+	id int auto_increment primary key,
+    nombre varchar(5000),
+    descripccion varchar(1000),
+    precio double (6,2),
+    stock int 
+);
+select * from users;
+ALTER TABLE users ADD COLUMN loginCount INT NOT NULL DEFAULT 0;
+ALTER TABLE users ADD COLUMN lastLogin datetime NULL;
+ALTER TABLE users ADD COLUMN createdAt datetime not null default current_timestamp;
+ALTER TABLE users ADD COLUMN createdAt2 datetime not null default current_timestamp;
+ALTER TABLE users ADD COLUMN isAdmin BOOLEAN NOT NULL DEFAULT FALSE;
+
+CREATE TABLE IF NOT EXISTS carrito (
+    idcompra INT AUTO_INCREMENT PRIMARY KEY,	
+    nombreProducto VARCHAR(5000),
+    descripccion VARCHAR(1000),
+    precio DOUBLE(6, 2),
+    cantidad INT DEFAULT 0, -- Asegúrate de que tenga un valor predeterminado o permita valores nulos
+    idUsuario INT NOT NULL, -- Nuevo campo para asociar el carrito con un usuario
+    productId INT NOT NULL, -- Campo obligatorio para identificar el producto
+    FOREIGN KEY (idUsuario) REFERENCES users(id) ON DELETE CASCADE
+);
+
+select * from carrito;
+
+INSERT INTO productos (nombre, descripccion, precio, stock) VALUES
+-- Running
+('Zapatillas Running X-Trail', 'Zapatillas ligeras para correr en asfalto.', 49.99, 50),
+('Camiseta Running ProFit', 'Camiseta transpirable para correr.', 19.99, 75),
+('Pantalón Corto Running Aero', 'Pantalón corto con cintura elástica.', 24.99, 60),
+('Calcetines Running Elite', 'Calcetines técnicos para largas distancias.', 9.99, 100),
+('Reloj GPS Running 3000', 'Reloj con GPS y monitor de ritmo cardíaco.', 149.99, 30),
+('Chaqueta Impermeable RunPro', 'Chaqueta ligera para correr bajo la lluvia.', 39.99, 40),
+('Mochila Hidratación Runner', 'Mochila con sistema de hidratación integrado.', 29.99, 25),
+('Cinturón Portaobjetos Running', 'Cinturón ajustable para llevar objetos pequeños.', 14.99, 80),
+
+-- Ciclismo
+('Bicicleta Montaña XC-500', 'Bicicleta de montaña con suspensión total.', 249.99, 15),
+('Casco Ciclismo ProShield', 'Casco ligero y ventilado para ciclismo.', 49.99, 50),
+('Guantes Ciclismo GripMax', 'Guantes con agarre antideslizante.', 19.99, 70),
+('Luces LED Bicicleta', 'Juego de luces delanteras y traseras.', 29.99, 60),
+('Portabidones Bicicleta', 'Soporte para bidón de agua.', 9.99, 100),
+('Cadena Antirrobo Bici', 'Cadena resistente para asegurar tu bicicleta.', 34.99, 40),
+('Ruedas MTB ProX', 'Ruedas ligeras para bicicletas de montaña.', 99.99, 20),
+('Kit Reparación Cubiertas', 'Kit para reparar pinchazos en ruedas.', 12.99, 90),
+
+-- Fitness
+('Banda Elástica Fitness', 'Banda elástica para ejercicios de fuerza.', 7.99, 120),
+('Kettlebell 10kg', 'Pesas rusas para entrenamiento funcional.', 29.99, 35),
+('Colchoneta Yoga EcoFlex', 'Colchoneta antideslizante para yoga.', 19.99, 80),
+('Set Pesas Ajustables', 'Pesas ajustables hasta 20kg.', 89.99, 25),
+('Rueda Abdominales ProCore', 'Rueda para ejercitar los abdominales.', 14.99, 60),
+('Banco Musculación MultiGym', 'Banco multifuncional para entrenar en casa.', 129.99, 15),
+('Gorra Fitness AeroCool', 'Gorra transpirable para entrenamientos intensos.', 12.99, 70),
+('Rodilleras Fitness Protect', 'Rodilleras para proteger articulaciones.', 24.99, 40),
+
+-- Natación
+('Gafas Natación AquaPro', 'Gafas ajustables con protección UV.', 14.99, 90),
+('Traje Baño Competición', 'Traje de baño ajustado para competiciones.', 39.99, 50),
+('Aletas Natación SpeedWave', 'Aletas para mejorar la técnica de patada.', 29.99, 40),
+('Tapones Oídos SwimSafe', 'Tapones de silicona para proteger los oídos.', 5.99, 150),
+('Boya Flotación SwimPro', 'Boya para seguridad en aguas abiertas.', 19.99, 60),
+('Gorro Natación Silicona', 'Gorro ajustable para reducir resistencia en el agua.', 9.99, 100),
+('Tabla Natación FloatBoard', 'Tabla para mejorar brazadas en piscina.', 12.99, 80),
+('Botella Agua Natación', 'Botella diseñada para usar en piscinas.', 7.99, 120),
+
+-- Montaña
+('Mochila Trekking Summit', 'Mochila de 40L para senderismo.', 59.99, 30),
+('Botas Montaña GTX', 'Botas impermeables para senderismo.', 89.99, 25),
+('Tienda Campaña Compact', 'Tienda de campaña para dos personas.', 79.99, 20),
+('Saco Dormir Térmico', 'Saco de dormir para temperaturas bajas.', 49.99, 35),
+('Linterna Frontal NightHike', 'Linterna frontal recargable.', 19.99, 50),
+('Bastones Trekking Aluminio', 'Bastones ajustables para senderismo.', 29.99, 40),
+('Brújula Profesional', 'Brújula precisa para orientación.', 14.99, 60),
+('Estufa Camping MiniFlame', 'Estufa portátil para cocinar al aire libre.', 39.99, 25),
+
+-- Fútbol
+('Balón Fútbol Premium', 'Balón oficial para partidos profesionales.', 29.99, 50),
+('Espinilleras ProShield', 'Espinilleras ligeras y protectoras.', 14.99, 70),
+('Red Portería Fútbol', 'Red resistente para porterías de fútbol.', 24.99, 30),
+('Botas Fútbol Campo', 'Botas con tacos para césped natural.', 59.99, 25),
+('Petos Entrenamiento', 'Petos para identificar equipos en entrenamientos.', 9.99, 100),
+('Portería Plegable Mini', 'Portería plegable para uso recreativo.', 39.99, 15),
+('Guantes Portero UltraGrip', 'Guantes con agarre excepcional.', 29.99, 40),
+('Conos Entrenamiento', 'Conos para ejercicios de agilidad.', 4.99, 200),
+
+-- Baloncesto
+('Balón Baloncesto ProCourt', 'Balón oficial para canchas interiores.', 24.99, 50),
+('Aro Baloncesto Regulable', 'Aro ajustable para diferentes alturas.', 49.99, 20),
+('Muñequeras Transpirables', 'Muñequeras para absorber el sudor.', 9.99, 80),
+('Tabla Ejercicios Dribbling', 'Tabla para mejorar el dribbling.', 19.99, 30),
+('Zapatillas Baloncesto JumpMax', 'Zapatillas con amortiguación reforzada.', 69.99, 15),
+('Mochila Baloncesto SportPack', 'Mochila con compartimento para balón.', 29.99, 40),
+('Rodilleras Baloncesto Protect', 'Rodilleras para evitar lesiones.', 19.99, 35),
+('Bandas Elásticas Entrenamiento', 'Bandas para fortalecer piernas.', 7.99, 120),
+
+-- Tenis
+('Raqueta Tenis PowerHit', 'Raqueta ligera para jugadores avanzados.', 99.99, 15),
+('Pelota Tenis Duramax', 'Pelotas duraderas para entrenamiento.', 12.99, 100),
+('Overgrip Absorbente', 'Overgrip para mejorar el agarre.', 4.99, 200),
+('Mochila Tenis ProCarry', 'Mochila con compartimento para raqueta.', 39.99, 25),
+('Muñequeras Tenis DryFit', 'Muñequeras para absorber el sudor.', 9.99, 80),
+('Rodilleras Tenis Protect', 'Rodilleras para evitar lesiones.', 19.99, 35),
+('Cordaje Raqueta Tenis', 'Cordaje profesional para raquetas.', 14.99, 60),
+('Protector Cabeza Raqueta', 'Protector para evitar daños en la raqueta.', 5.99, 150),
+
+-- Deportes de Equipo
+('Balón Voleibol Arena', 'Balón diseñado para jugar en la arena.', 19.99, 40),
+('Red Voleibol Profesional', 'Red resistente para partidos profesionales.', 39.99, 15),
+('Balón Balonmano ProGrip', 'Balón con textura antideslizante.', 24.99, 50),
+('Guantes Balonmano Protect', 'Guantes para proteger las manos.', 14.99, 60),
+('Pelota Rugby Oval', 'Pelota oval para rugby.', 29.99, 30),
+('Botas Rugby Campo', 'Botas con tacos para césped natural.', 59.99, 25),
+('Casco Rugby SafePlay', 'Casco protector para jugadores de rugby.', 39.99, 20),
+('Mochila Rugby SportPack', 'Mochila con compartimento para pelota.', 29.99, 40),
+
+-- Accesorios Deportivos
+('Botella Agua Deportiva', 'Botella con boquilla ergonómica.', 7.99, 120),
+('Toalla Deportiva Microfibra', 'Toalla absorbente para secarse rápido.', 12.99, 80),
+('Cinta Resistente Velcro', 'Cinta para ajustar accesorios deportivos.', 5.99, 150),
+('Reloj Deportivo Multifunción', 'Reloj con cronómetro y contador de pasos.', 59.99, 25),
+('Pulsómetro CardioFit', 'Monitor de frecuencia cardíaca.', 39.99, 30),
+('Bolsa Deporte Grande', 'Bolsa espaciosa para llevar equipamiento.', 29.99, 40),
+('Calcetines Deporte Ajustados', 'Calcetines con soporte para el arco.', 9.99, 100),
+('Cinturón Portaobjetos Deporte', 'Cinturón ajustable para llevar objetos pequeños.', 14.99, 80);
