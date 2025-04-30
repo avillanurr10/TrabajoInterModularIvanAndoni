@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECARTON - Inicio de sesión</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+</head>
+<body>
+<div class="container">
+
+    <div class="logo-container">
+        <img src="imagenes/logoApp.png" alt="DECARTON" class="logo">
+    </div>
+    
+    <form action="/login" method="post">
+        <div class="input-group">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required placeholder="Ej: deportista123">
+        </div>
+        
+        <div class="input-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required placeholder="••••••••">
+        </div>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+    
+
+    
+    <p class="register-link">¿No tienes cuenta? <a href="/register">Regístrate aquí</a></p>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

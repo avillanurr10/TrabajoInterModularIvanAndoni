@@ -1,0 +1,200 @@
+/* Estilos generales */
+body {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    background-image: url('/static/images/sport-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 40px 50px;
+    width: 380px;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo personalizado */
+.logo-container {
+    margin: -10px auto 20px;
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    max-width: 220px;
+    height: auto;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(-2deg);
+    filter: drop-shadow(0 6px 12px rgba(0, 172, 193, 0.3));
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 15px;
+}
+
+label {
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: -18px;
+    font-size: 0.95rem;
+    display: block;
+}
+
+input {
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+input:focus {
+    border-color: #00ACC1;
+    box-shadow: 0 0 0 4px rgba(0, 172, 193, 0.15);
+    outline: none;
+    background-color: #fff;
+}
+
+input:hover {
+    border-color: #b2ebf2;
+}
+
+/* Botón */
+button {
+    background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0, 140, 157, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #00838F 0%, #006064 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 140, 157, 0.3);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Mensajes */
+.error {
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    border-left: 4px solid #d32f2f;
+    animation: shake 0.5s ease;
+}
+
+.success {
+    color: #388e3c;
+    background-color: #e8f5e9;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    border-left: 4px solid #388e3c;
+    animation: fadeIn 0.6s ease;
+}
+
+/* Enlace de registro */
+.register-link {
+    margin-top: 25px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.register-link a {
+    color: #00ACC1;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.register-link a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00838F;
+    transition: width 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #00838F;
+}
+
+.register-link a:hover::after {
+    width: 100%;
+}
+
+/* Animaciones */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        width: 85%;
+        padding: 30px;
+    }
+
+    .logo {
+        max-width: 180px;
+    }
+}

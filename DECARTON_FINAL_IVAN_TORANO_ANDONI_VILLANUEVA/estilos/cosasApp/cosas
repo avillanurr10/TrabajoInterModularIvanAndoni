@@ -1,0 +1,13 @@
+
+cosas del login
+<#if error??>
+        <p class="error">${error}</p>
+    </#if>
+    <#if success??>
+        <p class="success">${success}</p>
+    </#if>
+
+    cosas del register
+    <#if error??>
+        <p class="error">${error}</p>
+    </#if>

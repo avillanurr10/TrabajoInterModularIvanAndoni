@@ -1,0 +1,203 @@
+body {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    background-image: url('/static/images/sport-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 40px 50px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Header derecha */
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 10px;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(-2deg);
+    filter: drop-shadow(0 6px 12px rgba(0, 172, 193, 0.3));
+}
+
+/* Botón debajo del logo */
+.nav-button {
+    background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: linear-gradient(135deg, #00838F 0%, #006064 100%);
+    transform: translateY(-3px);
+}
+
+h1, h2 {
+    margin: 20px 0 10px;
+    color: #00838F;
+}
+
+#users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#users-table th, #users-table td {
+    padding: 12px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#users-table th {
+    background-color: #00ACC1;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#users-table td {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Botón borrar */
+.delete-button {
+    background: linear-gradient(135deg, #e53935 0%, #b71c1c 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+    background: linear-gradient(135deg, #b71c1c 0%, #7f0000 100%);
+    transform: translateY(-2px);
+}
+
+/* Crear usuario */
+.create-user-form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #00ACC1;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 172, 193, 0.15);
+}
+
+/* Botón crear usuario */
+.create-button {
+    background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+    color: white;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.create-button:hover {
+    background: linear-gradient(135deg, #00838F 0%, #006064 100%);
+    transform: translateY(-3px);
+}
+
+/* Mensaje de error */
+.error {
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 0.95rem;
+    border-left: 4px solid #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px 20px;
+        width: 90%;
+    }
+
+    .header {
+        justify-content: center;
+    }
+
+    .logo-block {
+        align-items: center;
+    }
+
+    .logo {
+        max-width: 180px;
+    }
+
+    .nav-button, .delete-button, .create-button {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    #users-table th, #users-table td {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+}
