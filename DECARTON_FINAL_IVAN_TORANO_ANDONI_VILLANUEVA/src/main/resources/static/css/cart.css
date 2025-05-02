@@ -153,6 +153,42 @@ h1 {
     border-left: 4px solid #d32f2f;
 }
 
+.quantity-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-button {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.quantity-button:hover {
+    background-color: #0056b3;
+}
+
+.remove-form {
+    margin-top: 5px;
+}
+
+.remove-button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: #c82333;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .container {
