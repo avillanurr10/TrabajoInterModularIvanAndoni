@@ -84,4 +84,52 @@ public class CartDAO {
             throw e;
         }
     }
+
+    // Método para actualizar la cantidad de un producto en el carrito
+    public void updateCartItemQuantity(int idCompra, String action) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            // Obtener el producto del carrito
+            Cart cartItem = session.get(Cart.class, idCompra);
+            if (cartItem != null) {
+                int currentQuantity = cartItem.getCantidad();
+                if ("increase".equals(action)) {
+                    cartItem.setCantidad(currentQuantity + 1); // Aumentar cantidad
+                } else if ("decrease".equals(action) && currentQuantity > 1) {
+                    cartItem.setCantidad(currentQuantity - 1); // Disminuir cantidad
+                }
+                session.update(cartItem); // Actualizar el producto en el carrito
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    // Método para eliminar un producto del carrito
+    public void removeFromCart(int idCompra) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            // Eliminar el producto del carrito
+            Cart cartItem = session.get(Cart.class, idCompra);
+            if (cartItem != null) {
+                session.delete(cartItem);
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }
