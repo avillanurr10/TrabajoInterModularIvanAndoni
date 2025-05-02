@@ -263,6 +263,29 @@ public class Main {
             ctx.render("manage_stock.ftl", model);
         });
 
+        app.post("/update-cart", ctx -> {
+            int userId = 1; // Simulación de ID de usuario
+            int idCompra = Integer.parseInt(ctx.formParam("idcompra"));
+            String action = ctx.formParam("action");
+
+            // Actualizar la cantidad en el carrito
+            cartDAO.updateCartItemQuantity(idCompra, action);
+
+            // Redirigir al carrito
+            ctx.redirect("/cart");
+        });
+
+        app.post("/remove-from-cart", ctx -> {
+            int userId = 1; // Simulación de ID de usuario
+            int idCompra = Integer.parseInt(ctx.formParam("idcompra"));
+
+            // Eliminar el producto del carrito
+            cartDAO.removeFromCart(idCompra);
+
+            // Redirigir al carrito
+            ctx.redirect("/cart");
+        });
+
         app.post("/update-stock", ctx -> {
             // Verificar si el usuario es administrador
             Boolean isAdmin = ctx.sessionAttribute("isAdmin");
